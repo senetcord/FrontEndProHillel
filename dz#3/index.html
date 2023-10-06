@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DZ#3</title>
+  </head>
+  <body>
+    <script>
+      // #1
+      let userName = prompt("Enter your name", "John");
+      if (userName == "" || userName == null) {
+        alert("Шкода, що Ви не захотіли ввести ваше ім'я");
+      } else {
+        alert(`Hello, ${userName}! How are you?`);
+      }
+
+      console.log("-----------------------------------");
+
+      // #2
+
+      let num3 = prompt("Enter 3 digit number", "123");
+      if (num3 == null || num3 == "" || num3.length != 3) {
+        alert(
+          "Шкода, що Ви не захотіли ввести трьохзначне число, тому щоб скрипт не зламався я вирішив поставити 121 замість вас"
+        );
+        num3 = "121";
+      }
+
+      function isAllDigitsSame(num) {
+        const digits = num.split("");
+        for (let i = 0; i < digits.length - 1; i++) {
+          if (digits[i] !== digits[i + 1]) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      function areAnyDigitsSame(num) {
+        const digits = num.split("");
+        for (let i = 0; i < digits.length - 1; i++) {
+          for (let j = i + 1; j < digits.length; j++) {
+            if (digits[i] === digits[j]) {
+              return true;
+            }
+          }
+        }
+        return false;
+      }
+
+      alert(num3 + " Чи всі цифри однакові? " + isAllDigitsSame(num3));
+      alert(
+        num3 + " Чи є серед цифр цифри однакові? " + areAnyDigitsSame(num3)
+      );
+
+      console.log("-----------------------------------");
+      // #3
+
+      let birthDay = prompt("Який ваш рік народження?");
+      if (birthDay == false || birthDay == null) {
+        alert("Шкода, що Ви не захотіли ввести ваш рік народження");
+      } else {
+        alert(`Ваш вік ${2023 - birthDay}`);
+      }
+
+      let city = prompt("В якому місті ви живете?");
+      if (city == false || city == null) {
+        alert("Шкода, що Ви не захотіли ввести ваше місто");
+      } else if (city == "Київ") {
+        alert("Ти живеш у столиці України");
+      } else if (city == "Вашингтон") {
+        alert("Ти живеш у столиці США");
+      } else if (city == "Лондон") {
+        alert("Ти живеш у столиці Великобританії");
+      } else {
+        alert(`Ти живеш у місті ${city}`);
+      }
+
+      let favSport = prompt("Уведіть ваш улюблений вид спорту?");
+      if (favSport == false || favSport == null) {
+        alert("Шкода, що Ви не захотіли ввести ваш улюблений вид спорту");
+      } else if (favSport == "Бокс") {
+        alert("Круто! Хочеш стати Майком Тайсоном?");
+      } else if (favSport == "Спринт") {
+        alert("Круто! Хочеш стати Усейном Болтом?");
+      } else if (favSport == "Баскетбол") {
+        alert("Круто! Хочеш стати Майклом Джорданом?");
+      } else {
+        alert(`Ваш улюблений вид спорту ${favSport}`);
+      }
+
+      console.log("-----------------------------------");
+      // #4
+      let numOrStr = prompt("input number or string");
+      console.log(numOrStr);
+
+      switch (numOrStr) {
+        case null:
+          console.log("ви скасували");
+          break;
+        case "":
+          console.log("Empty String");
+          break;
+        case NaN:
+          console.log(" number is Ba_NaN");
+          break;
+        default:
+          console.log("OK!");
+          break;
+      }
+    </script>
+  </body>
+</html>

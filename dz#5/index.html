@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let sum = 0;
+      for (let i = 1; i <= 15; i++) {
+        sum += i;
+      }
+      console.log("Завдання 1: ", sum);
+      //   --------------------------------------------
+      let mult = 1;
+      for (let i = 15; i <= 35; i++) {
+        mult *= i;
+      }
+      console.log("Завдання 2: ", mult);
+      //   --------------------------------------------
+      let mean = 0;
+      for (let i = 1; i <= 500; i++) {
+        mean += i / 500;
+      }
+      console.log("Завдання 3: ", mean);
+      //   --------------------------------------------
+      let evenSum = 0;
+      for (let i = 30; i <= 80; i++) {
+        if (i % 2 === 0) {
+          evenSum += i;
+        }
+      }
+      console.log("Завдання 4: ", evenSum);
+      //   --------------------------------------------
+      console.log("Завдання 5:");
+      const size = 10; // Розмір таблиці Піфагора
+
+      for (let i = 1; i <= size; i++) {
+        let row = "";
+        for (let j = 1; j <= size; j++) {
+          row += i * j + "\t";
+        }
+        console.log(row);
+      }
+    </script>
+  </body>
+</html>

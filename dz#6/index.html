@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //------------------------------------------//
+
+      function removeElement(array, item) {
+        const index = array.indexOf(item);
+        if (index !== -1) {
+          array.splice(index, 1);
+        }
+      }
+      const array = [1, 3, 4, 6, 2, 5, 7];
+      removeElement(array, 4);
+      console.log("Завдання 1 : ", array);
+
+      //------------------------------------------//
+
+      function calculateAverage(array) {
+        const numbers = array.filter((item) => typeof item === "number");
+        const sum = numbers.reduce((acc, cur) => acc + cur, 0);
+        const res = sum / numbers.length;
+        return res;
+      }
+
+      const myArray = [1, 2, "three", 4, "five", 6];
+      const average = calculateAverage(myArray);
+      console.log(
+        "Завдання 2 :",
+        `Середнє арифметичне чисел в масиві: ${average}`
+      );
+
+      //------------------------------------------//
+
+      function removeCharacters(str, charactersToRemove) {
+        return str
+          .split("")
+          .filter((char) => !charactersToRemove.includes(char))
+          .join("");
+      }
+      const inputString = " hello world";
+      const charactersToRemove = ["l", "d"];
+      const result = removeCharacters(inputString, charactersToRemove);
+      console.log("Завдання 3 : ", result); // "heo wor"
+
+      //------------------------------------------//
+    </script>
+  </body>
+</html>

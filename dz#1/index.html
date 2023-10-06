@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DZ#1</title>
+  </head>
+  <body>
+    <script>
+      // #1
+      let a;
+      const b = null;
+      const date = new Date("2023-09-15");
+
+      console.log("true: ", typeof true);
+      console.log("2: ", typeof 2);
+      console.log("'string': ", typeof "string");
+      console.log("{}: ", typeof {});
+      console.log("2n: ", typeof 2n);
+      console.log("Symbol(): ", typeof Symbol("optional description"));
+      console.log("let a; : ", typeof a);
+      console.log("let b = null; : ", typeof b); // не знаю як через typeof показати null
+      console.log("[]: ", typeof []);
+      console.log("date: ", typeof date);
+      console.log("function: ", typeof function () {});
+
+      console.log("-------------------------------");
+      // #2
+
+      const word1 = prompt("Write anything", "word");
+      const word2 = prompt("Write anything", "word");
+      const word3 = prompt("Write anything", "word");
+
+      console.log(`${word1} ${word2} ${word3}`);
+
+      console.log("-------------------------------");
+      // #3
+
+      const numbers = 10369;
+      const spacedNumbers = String(numbers).split("").join(" ");
+      console.log("10369 --> ", spacedNumbers);
+
+      //   :)
+    </script>
+  </body>
+</html>

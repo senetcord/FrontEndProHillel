@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DZ#2</title>
+  </head>
+  <body>
+    <script>
+      // #1
+
+      const numbers = 10369;
+      const spacedNumbers = String(numbers).split("").join(" ");
+      console.log("10369 --> ", spacedNumbers);
+
+      console.log("---------------------------");
+      // #2
+
+      function allOperations(a, b) {
+        console.log(`a = ${a}, b = ${b}`);
+        console.log("a + b", a + b);
+        console.log("a - b", a - b);
+        console.log("a * b", a * b);
+        console.log("a / b", a / b);
+      }
+
+      allOperations(4, 4);
+
+      console.log("---------------------------");
+      // #3
+
+      function nameCap() {
+        const name = prompt("Уведіть ім'я з маленької літери: ", "антон");
+        const res = name.charAt(0).toUpperCase() + name.slice(1);
+        alert(res);
+      }
+
+      nameCap();
+    </script>
+  </body>
+</html>
