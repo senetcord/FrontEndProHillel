@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //------------------------------------------//
+
+      function sumFunc() {
+        let total = 0;
+        return function (num) {
+          total += num;
+          return total;
+        };
+      }
+
+      const sum = sumFunc();
+
+      console.log("Завдання №1:");
+      console.log(sum(4)); // 4  ()(4) => 4
+      console.log(sum(6)); // 10
+      console.log(sum(10)); // 20
+      console.log(sum(7)); // 27
+      console.log("--------------------------------");
+
+      //------------------------------------------//
+
+      function multFunc(num1) {
+        return function (num2) {
+          return num1 * num2;
+        };
+      }
+
+      console.log("Завдання №2:");
+      console.log(multFunc(5)(2));
+      console.log(multFunc(0)(1));
+      console.log(multFunc(10)(10));
+      console.log("--------------------------------");
+
+      //------------------------------------------//
+
+      function cycle() {
+        let res;
+        for (let i = 0; i < 10; i++) {
+          // var q = prompt("Введіть число більше 100!");
+          let q = prompt("Введіть число більше 100!");
+          res = Number(q);
+          if (Number(q) > 100) {
+            break;
+          }
+        }
+        console.log(res);
+      }
+
+      console.log("Завдання №3:");
+      cycle();
+      console.log("--------------------------------");
+
+      //------------------------------------------//
+    </script>
+  </body>
+</html>
