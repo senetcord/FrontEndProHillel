@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //------------------------------------------//
+
+      const user = {
+        name: "Carl",
+        age: 22,
+        location: "Australia",
+        displayInfo() {
+          console.log(`Name: ${this.name}`);
+          console.log(`Age: ${this.age}`);
+          console.log(`Location: ${this.location}`);
+        },
+      };
+
+      console.log("Завдання №1:");
+      user.displayInfo();
+      console.log("--------------------------------");
+
+      //------------------------------------------//
+
+      let array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+      function getEvenArr(arr) {
+        return array.filter((number) => {
+          return number % 2 === 0;
+        });
+      }
+
+      console.log("Завдання №2:");
+      console.log(getEvenArr(array));
+      console.log("--------------------------------");
+
+      //------------------------------------------//
+
+      const telBook = {
+        contacts: [
+          { name: "Carl", telNum: "1231", email: "carl@mail.com" },
+          { name: "Olga", telNum: "4562", email: "olga@mail.com" },
+          { name: "Anna", telNum: "7893", email: "anna@mail.com" },
+        ],
+        searchByName(name) {
+          return this.contacts.find((contact) => contact.name === name);
+        },
+        addContact(name, telNum, email) {
+          this.contacts.push({ name, telNum, email });
+        },
+      };
+
+      console.log("Завдання №3:");
+
+      console.log(`пошук "Carl"`, telBook.searchByName("Carl"));
+
+      console.log(`додаю "Dima"`);
+      telBook.addContact("Dima", "1024", "dima@mail.com");
+
+      console.log(`пошук "Dima"`, telBook.searchByName("Dima"));
+
+      console.log(telBook);
+
+      console.log("--------------------------------");
+    </script>
+  </body>
+</html>
