@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Person(
+        name = prompt("Вкажіть ім'я"),
+        age = prompt("Вкажіть вік")
+      ) {
+        this.name = name;
+        this.age = age;
+
+        this.getData = function () {
+          return `${this.name} ${this.age}`;
+        };
+      }
+
+      function Car(
+        brand = prompt("Вкажіть бренд"),
+        model = prompt("Вкажіть модель"),
+        year = prompt("Вкажіть рік випуску")
+      ) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+
+        this.showData = function () {
+          alert(
+            `Бренд: ${this.brand}\nМодель: ${this.model}\nРік випуску: ${this.year}`
+          );
+        };
+
+        this.addOwner = function (owner) {
+          this.owner = owner;
+        };
+      }
+
+      // Приклад з введеними даними
+      // const personCarl = new Person("Carl", 22);
+      // console.log(personCarl.getData());
+
+      // const carFerrari = new Car("Ferrari", "250 GTO", 1962);
+      // carFerrari.showData();
+      // carFerrari.addOwner(personCarl);
+      // console.log(carFerrari);
+
+      // Приклад з ручним вводом даних
+      const person_Name_ = new Person();
+      console.log(person_Name_.getData());
+
+      const car_Name_ = new Car();
+      car_Name_.showData();
+      car_Name_.addOwner(person_Name_);
+      console.log(car_Name_);
+
+      // Кінець
+    </script>
+  </body>
+</html>
