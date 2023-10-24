@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .text {
+      color: blue;
+    }
+    .text2 {
+      color: red;
+    }
+
+    .randomImage {
+      width: 100px;
+    }
+  </style>
+  <body>
+    <button class="toggleColorBtn">Натисни!</button>
+    <span class="text">Цей текст змінює колір!</span>
+
+    <div id="pythagoreanTable">
+      <!-- table -->
+    </div>
+
+    <img class="randomImage" alt="randomImage" />
+    <script defer>
+      // #1
+      button = document.querySelector(".toggleColorBtn");
+      text = document.querySelector(".text");
+      button.addEventListener("click", function () {
+        text.classList.toggle("text2");
+      });
+
+      // #2
+      function generatePythagoreanTable(rows, columns) {
+        let table = "<table>";
+
+        for (let i = 1; i <= rows; i++) {
+          table += "<tr>";
+
+          for (let j = 1; j <= columns; j++) {
+            table += "<td>" + i * j + "</td>";
+          }
+
+          table += "</tr>";
+        }
+
+        table += "</table>";
+
+        return table;
+      }
+
+      document.getElementById("pythagoreanTable").innerHTML =
+        generatePythagoreanTable(10, 10);
+
+      // #3
+      const img = document.querySelector(".randomImage");
+      let rng = Math.floor(Math.random() * 9 + 1);
+      img.setAttribute("src", `./img/${rng}.jpg`);
+    </script>
+  </body>
+</html>
