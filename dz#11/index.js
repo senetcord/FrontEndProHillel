@@ -26,19 +26,36 @@ const input = document.querySelector(".js--input");
 const list = document.querySelector(".js--list");
 const listItems = list.getElementsByTagName("li");
 
+const form = document.querySelector(".js--form");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
+
 addBtn.addEventListener("click", (e) => {
   if (input.value === "") {
     alert("Уведіть завдання!");
   } else {
     const item = document.createElement("li");
+    const button = document.createElement("button");
+    button.textContent = "Видалити";
+    button.style.marginLeft = "5px";
     item.textContent = input.value;
+
+    // Перший варіант
+    // button.addEventListener("click", (e) => {
+    //   e.target.parentNode.remove();
+    // });
+
+    item.appendChild(button);
     list.appendChild(item);
   }
 
   input.value = "";
 
+  // Другий варіант
   Array.from(listItems).forEach((item) => {
-    item.addEventListener("dblclick", () => {
+    const liBtn = item.getElementsByTagName("button")[0];
+    liBtn.addEventListener("click", () => {
       item.remove();
     });
   });
