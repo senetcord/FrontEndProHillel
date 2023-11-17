@@ -8,54 +8,58 @@ function Form(form, button) {
 
     for (let i = 0; i < this.form.length; i++) {
       if (this.form[i].dataset.req) {
-        checkReq(this.form[i]);
+        isValid = isValid && validateRequired(this.form[i]);
       }
 
       if (this.form[i].dataset.min_length) {
-        checkMinLength(this.form[i]);
+        isValid = isValid && validateMinLength(this.form[i]);
       }
 
       if (this.form[i].dataset.email) {
-        checkEmail(this.form[i]);
-      }
-
-      if (this.form[i].closest("div").classList.contains("error")) {
-        isValid = false;
+        isValid = isValid && validateEmail(this.form[i]);
       }
     }
 
-    this.blockForm(isValid, this.form, button);
+    if (isValid) {
+      this.submitForm(button);
+    }
   });
 
-  function checkReq(input) {
+  function validateRequired(input) {
     if (input.value.trim().length > 0) {
       setSuccess(input);
+      return true;
     } else {
       const message = input.dataset.req;
       setError(input, message);
+      return false;
     }
   }
 
-  function checkMinLength(input) {
+  function validateMinLength(input) {
     const minLength = Number(input.dataset.min_length);
 
     if (input.value.trim().length >= minLength) {
       setSuccess(input);
+      return true;
     } else {
       let messageShell = input.dataset.min_message;
       const message = messageShell.replace(/N/, `${minLength}`);
 
       setError(input, message);
+      return false;
     }
   }
 
-  function checkEmail(input) {
+  function validateEmail(input) {
     const mailRegExp = /\w+@\w+\.\w+/;
     if (input.value.match(mailRegExp)) {
       setSuccess(input);
+      return true;
     } else {
       const message = input.dataset.email;
       setError(input, message);
+      return false;
     }
   }
 
@@ -83,18 +87,16 @@ function Form(form, button) {
   }
 }
 
-Form.prototype.blockForm = function (isValid, form, button) {
-  if (isValid) {
-    console.log(form.attributes.method, form.attributes.action);
-    for (let i = 0; i < this.form.length; i++) {
-      if (this.form[i].classList.contains(`${button}`)) {
-        this.form[i].setAttribute("disabled", "disabled");
-        continue;
-      }
-      console.log(this.form[i].name, this.form[i].value);
-      this.form[i].closest("div").classList.add("success");
+Form.prototype.submitForm = function (button) {
+  console.log(this.form.attributes.method, this.form.attributes.action);
+  for (let i = 0; i < this.form.length; i++) {
+    if (this.form[i].classList.contains(`${button}`)) {
       this.form[i].setAttribute("disabled", "disabled");
+      continue;
     }
+    console.log(this.form[i].name, this.form[i].value);
+    this.form[i].closest("div").classList.add("success");
+    this.form[i].setAttribute("disabled", "disabled");
   }
 };
 
