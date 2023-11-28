@@ -2,6 +2,7 @@ const dateField = document.querySelector(".js--weather__date");
 const timeField = document.querySelector(".js--weather__time");
 const humidityField = document.querySelector(".js--weather__humidity");
 const pressureField = document.querySelector(".js--weather__pressure");
+const windField = document.querySelector(".js--weather__wind");
 const imgField = document.querySelector(".js--weather__img");
 const tempField = document.querySelector(".js--weather__temp");
 const feelTempField = document.querySelector(".js--weather__feels-like-temp");
@@ -19,6 +20,7 @@ async function updateWeather() {
 
   humidityField.textContent = `Humidity: ${result.main.humidity}%`;
   pressureField.textContent = `Pressure: ${result.main.pressure} hPa`;
+  windField.textContent = `Wind: ${result.wind.speed} km/h SSE`;
   imgField.src = `http://openweathermap.org/img/w/${result.weather[0].icon}.png`;
   imgField.alt = "something went wrong";
   tempField.textContent = `${result.main.temp}°C`;
