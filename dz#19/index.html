@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section class="weather">
+      <div class="weather__container">
+        <div class="weather__left">
+          <h1 class="weather__title">Bila Tserkva:</h1>
+          <p class="weather__date js--weather__date"></p>
+          <p class="weather__time js--weather__time"></p>
+          <p class="weather__humidity js--weather__humidity"></p>
+          <p class="weather__pressure js--weather__pressure"></p>
+          <p class="weather__wind js--weather__wind"></p>
+        </div>
+        <div class="weather__right">
+          <img class="weather__img js--weather__img" alt="RELOAD!" />
+          <p class="weather__temp js--weather__temp"></p>
+          <p class="weather__feels-like-temp js--weather__feels-like-temp"></p>
+          <p class="weather__description js--weather__description"></p>
+
+          <span class="weather__update__button js--weather__update__button"
+            >⟳</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <script defer src="main.js"></script>
+  </body>
+</html>
