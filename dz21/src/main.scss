@@ -1,0 +1,22 @@
+$body-color: blue;
+
+body {
+  background: rgb(238, 174, 202);
+  background: radial-gradient(
+    circle,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+
+  color: $body-color;
+
+  h1 {
+    text-align: center;
+  }
+
+  div {
+    display: flex;
+    justify-content: center;
+    column-gap: 25px;
+  }
+}
