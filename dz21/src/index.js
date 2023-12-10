@@ -1,4 +1,4 @@
-import "./main.scss";
+import "./style.scss";
 
 const WHO = "Carl";
 

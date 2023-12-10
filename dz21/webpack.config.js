@@ -1,35 +1,86 @@
 const path = require("path");
 
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+
+const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
+
 module.exports = {
   mode: "production",
-  entry: {
-    path: path.join(__dirname, "src", "index.js"),
-  },
+  entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
+    path: path.resolve(__dirname, "dist"),
   },
-
   module: {
     rules: [
       {
-        test: /\.js$/,
-        use: ["babel-loader"],
+        test: /\.s[ac]ss$/i,
+
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
       {
-        test: /\.scss$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        type: "asset",
+      },
+      {
+        test: /\.(?:js|mjs|cjs)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: [["@babel/preset-env", { targets: "defaults" }]],
+          },
+        },
       },
     ],
   },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      "...",
+      new CssMinimizerPlugin(),
+      new ImageMinimizerPlugin({
+        minimizer: {
+          implementation: ImageMinimizerPlugin.imageminMinify,
+          options: {
+            plugins: [
+              ["gifsicle", { interlaced: true }],
+              ["jpegtran", { progressive: true }],
+              ["optipng", { optimizationLevel: 5 }],
 
+              [
+                "svgo",
+                {
+                  plugins: [
+                    {
+                      name: "preset-default",
+                      params: {
+                        overrides: {
+                          removeViewBox: false,
+                          addAttributesToSVGElement: {
+                            params: {
+                              attributes: [
+                                { xmlns: "http://www.w3.org/2000/svg" },
+                              ],
+                            },
+                          },
+                        },
+                      },
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+      }),
+    ],
+  },
+  plugins: [new MiniCssExtractPlugin()],
   devServer: {
     static: {
-      directory: path.join(__dirname, "public"),
-    },
-    port: 9000,
-    client: {
-      reconnect: true,
+      directory: path.join(__dirname, "dist"),
     },
   },
 };
