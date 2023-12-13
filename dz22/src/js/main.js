@@ -1,5 +1,3 @@
-import "../scss/styles.scss";
-
 const input = document.querySelector(".js--input");
 const fetchBtn = document.querySelector(".js--fetchBtn");
 const loadingCircle = document.querySelector(".js--loadingCircle");
@@ -20,7 +18,7 @@ async function makeRequest(event) {
 
   const inputData = input.value.trim();
   if (inputData === "") {
-    alert("Уведіть значення!");
+    alert("Please enter a value!");
     return;
   }
 
@@ -29,26 +27,31 @@ async function makeRequest(event) {
     resultContainer.classList.add("js--hide");
   }
 
-  const result = await fetchData(inputData);
+  try {
+    const result = await fetchData(inputData);
 
-  if (result) {
     loadingCircle.classList.add("js--hide");
     resultContainer.classList.remove("js--hide");
     resInfo.textContent = JSON.stringify(result, null, 4);
+  } catch (error) {
+    loadingCircle.classList.add("js--hide");
+    resultContainer.classList.remove("js--hide");
+    resInfo.textContent = "Error 404";
+    throw new Error("404");
   }
 }
 
 async function fetchData(inputData) {
   try {
     const res = await fetch(`${URL}${inputData}`);
-    const response = res.json();
+    const response = await res.json();
     return response;
-  } catch {
-    throw new Error("COULDN'T FETCH DATA!");
+  } catch (error) {
+    throw new Error("Failed to fetch data!");
   }
 }
 
 function tryHint(e) {
   input.value = e.target.textContent;
-  makeRequest(event);
+  makeRequest(e);
 }
