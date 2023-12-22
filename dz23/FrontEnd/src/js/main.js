@@ -20,6 +20,8 @@ async function refreshList() {
   todoList.innerHTML = "";
   const res = await axios.get(URL);
   renderTodoList(res.data);
+  inputArea.value = "";
+  inputArea.focus();
 }
 
 function renderTodoList(data) {
@@ -46,20 +48,27 @@ function renderTodoItem(text, checkedStatus, id) {
   input.checked = checkedStatus;
 
   input.addEventListener("click", async () => {
-    const req = await axios.put(`${URL}/${li.id}`);
+    await axios.put(`${URL}/${li.id}`);
     refreshList();
   });
 
   const span = document.createElement("span");
   span.classList.add("ms-1", "js--todoText");
   span.textContent = text;
+  if (input.checked) {
+    span.classList.add("js--lineThrough");
+  }
+  span.addEventListener("click", async () => {
+    await axios.put(`${URL}/${li.id}`);
+    refreshList();
+  });
 
   const button = document.createElement("button");
   button.classList.add("btn-close", "ms-auto", "js--todoDeleteBtn");
   button.setAttribute("aria-label", "Close");
 
   button.addEventListener("click", async () => {
-    const req = await axios.delete(`${URL}/${li.id}`);
+    await axios.delete(`${URL}/${li.id}`);
     refreshList();
   });
 
@@ -74,13 +83,17 @@ addTodoBtn.addEventListener("click", handleAddTodo);
 
 async function handleAddTodo() {
   const inputText = inputArea.value;
-  const req = await axios.post(URL, {
+  if (inputText.trim() === "") {
+    alert("Enter a value!");
+    return;
+  }
+  await axios.post(URL, {
     text: inputText,
   });
   refreshList();
 }
 
 clearAllTodoBtn.addEventListener("click", async () => {
-  const req = await axios.delete(`${URL}`);
+  await axios.delete(`${URL}`);
   refreshList();
 });
