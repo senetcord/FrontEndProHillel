@@ -1,0 +1,17 @@
+[
+  {
+    "text": "Read a book",
+    "checked": true,
+    "_id": 1
+  },
+  {
+    "text": "Meditate",
+    "checked": false,
+    "_id": 2
+  },
+  {
+    "text": "Code",
+    "checked": true,
+    "_id": 3
+  }
+]
