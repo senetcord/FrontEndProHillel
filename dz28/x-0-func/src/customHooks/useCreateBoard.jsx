@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function useCreateBoard(boardSquares, setBoardSquares) {
+export default function useCreateBoard() {
   const [xIsNext, setXIsNext] = useState(true);
   const [winner, setWinner] = useState(null);
   const [tie, setTie] = useState(false);
+
+  const [boardSquares, setBoardSquares] = useState(
+    JSON.parse(localStorage.getItem("boardSquares")) || Array(9).fill(null)
+  );
 
   function handleClick(index) {
     const updatedBoardSquares = [...boardSquares];
@@ -31,7 +35,11 @@ export default function useCreateBoard(boardSquares, setBoardSquares) {
     setTie(false);
   }
 
-  return { handleClick, restartGame, winner, tie };
+  useEffect(() => {
+    localStorage.setItem("boardSquares", JSON.stringify(boardSquares));
+  }, [boardSquares]);
+
+  return { handleClick, restartGame, winner, tie, boardSquares };
 }
 
 function calculateWinner(boardSquares) {

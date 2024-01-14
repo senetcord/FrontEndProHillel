@@ -1,21 +1,10 @@
-import { useState, useEffect } from "react";
 import "./Board.css";
 import Square from "./Square";
 import useCreateBoard from "../customHooks/useCreateBoard";
 
 function Board() {
-  const [boardSquares, setBoardSquares] = useState(
-    JSON.parse(localStorage.getItem("boardSquares")) || Array(9).fill(null)
-  );
-
-  const { handleClick, restartGame, winner, tie } = useCreateBoard(
-    boardSquares,
-    setBoardSquares
-  );
-
-  useEffect(() => {
-    localStorage.setItem("boardSquares", JSON.stringify(boardSquares));
-  }, [boardSquares]);
+  const { handleClick, restartGame, winner, tie, boardSquares } =
+    useCreateBoard();
 
   return (
     <>
