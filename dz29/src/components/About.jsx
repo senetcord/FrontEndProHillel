@@ -3,7 +3,7 @@ import Tobias2 from "../assets/tobias2.jpg";
 
 const About = () => {
   return (
-    <div className="max-w-screen-lg mx-auto ">
+    <div className="max-w-screen-lg mx-auto sm:px-0 px-3">
       <h1 className="text-5xl text-center">About me:</h1>
       <img
         src={Tobias}

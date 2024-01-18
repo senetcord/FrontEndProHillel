@@ -10,8 +10,8 @@ const Header = () => {
   }, [theme]);
 
   return (
-    <header className="flex items-center justify-between py-4 px-8 mb-10">
-      <div className="flex flex-col space-y-1 cursor-pointer">
+    <header className="flex flex-col gap-2 sm:flex-row items-center justify-between py-4 px-8 mb-10">
+      <div className="flex flex-col space-y-1 cursor-pointer mb-10 sm:mb-0">
         <h1 className="text-4xl font-bold text-blue-500">Tobias</h1>
         <h2
           className={`text-2xl font-light opacity-75 ${
@@ -22,7 +22,7 @@ const Header = () => {
         </h2>
       </div>
 
-      <div className="flex space-x-4">
+      <div className="flex gap-4 flex-wrap justify-center ">
         <LinkTo to="/" name="Main" />
         <LinkTo to="/todo" name="ToDo" />
         <LinkTo to="/about" name="About me" />

@@ -46,11 +46,11 @@ const ToDo = () => {
       <div className="text-5xl text-center mb-5">TODO LIST:</div>
       <form
         onSubmit={(event) => handleSubmit(event)}
-        className="flex w-[50%] mx-auto justify-between items-center m-5"
+        className="grid grid-rows-3 sm:grid-rows-1 sm:grid-cols-[2fr 1fr 1fr] sm:w-1/2 sm:px-0 px-3 mx-auto"
       >
         <input
           ref={input}
-          className={`grow border-solid border-4 border-gray-600 text-2xl ${
+          className={`border-solid border-4 border-gray-600 text-2xl ${
             theme === "light" ? "" : "text-black"
           }`}
           type="text"
@@ -64,7 +64,7 @@ const ToDo = () => {
         <button
           type="button"
           onClick={handleDeleteAll}
-          className="text-2xl border-solid border-4 border-orange-600 text-white bg-orange-600"
+          className="text-2xl border-solid border-4 border-yellow-300 text-black bg-yellow-300"
         >
           Delete All
         </button>

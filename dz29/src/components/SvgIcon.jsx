@@ -6,7 +6,7 @@ const SvgIcon = ({ path, name, link }) => {
   const [theme] = useContext(ThemeMode);
   const color = theme === "light" ? "" : "fill-white";
   return (
-    <a href={link}>
+    <a href={link} rel="noreferrer" target="_blank">
       <svg
         className={`w-48 ${color}`}
         role="img"

@@ -21,7 +21,7 @@ const TodoItem = ({ text, checked, id, todos, setTodos }) => {
     setTodos(newTodos);
   }
   return (
-    <li className="flex w-[50%] mx-auto justify-between items-center m-5">
+    <li className="flex sm:w-[50%] sm:px-0 px-3 mx-auto justify-between items-center m-5">
       <div className="flex items-center gap-4">
         <input
           onChange={handleChange}
