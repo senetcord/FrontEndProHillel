@@ -34,7 +34,7 @@ const InputForm = ({ onSubmit, deleteAll }) => {
       <Button onClick={deleteAll} type="button" variant="outlined">
         Delete All
       </Button>
-      {formik.errors.input && formik.dirty ? (
+      {!formik.isValid ? (
         <div style={{ color: "red", margin: "30px auto" }}>
           {formik.errors.input}
         </div>
