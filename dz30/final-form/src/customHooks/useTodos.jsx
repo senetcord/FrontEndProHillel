@@ -1,5 +1,5 @@
 import { useState } from "react";
-import generateUniqueId from "generate-unique-id";
+import { v4 as uuidv4 } from "uuid";
 
 function useTodos() {
   const [todos, setTodos] = useState([]);
@@ -9,7 +9,7 @@ function useTodos() {
   };
 
   const onSubmit = (values, form) => {
-    setTodos([...todos, { text: values.todoInput, id: generateUniqueId() }]);
+    setTodos([...todos, { text: values.todoInput, id: uuidv4() }]);
     form.reset();
   };
 

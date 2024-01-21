@@ -28,8 +28,9 @@ function App() {
           return (
             <TodoItem
               key={todo.id}
+              id={todo.id}
               text={todo.text}
-              handleDelete={() => handleDelete(todo.id)}
+              handleDelete={handleDelete}
             />
           );
         })}

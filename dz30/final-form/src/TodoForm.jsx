@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 import Input from "./Input";
 
 function TodoForm(props) {
-  const { valid, handleSubmit, deleteAll, errors } = props;
+  const { valid, handleSubmit, deleteAll, errors, dirty } = props;
   return (
     <form onSubmit={handleSubmit} className="form" autoComplete="off">
       <Field
@@ -21,7 +21,7 @@ function TodoForm(props) {
       <Button onClick={deleteAll} type="button" variant="outlined">
         Delete All
       </Button>
-      {!valid ? (
+      {!valid && dirty ? (
         <div style={{ color: "red", margin: "30px auto" }}>{errors.input}</div>
       ) : null}
     </form>
@@ -30,6 +30,7 @@ function TodoForm(props) {
 
 TodoForm.propTypes = {
   valid: PropTypes.bool.isRequired,
+  dirty: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   deleteAll: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,

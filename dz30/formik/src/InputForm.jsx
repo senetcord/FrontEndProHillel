@@ -17,7 +17,6 @@ const InputForm = ({ onSubmit, deleteAll }) => {
     validate: validateInput,
     onSubmit: onSubmit,
   });
-  console.log(formik.initialErrors);
   return (
     <form onSubmit={formik.handleSubmit} className="form" autoComplete="off">
       <TextField
@@ -35,7 +34,7 @@ const InputForm = ({ onSubmit, deleteAll }) => {
       <Button onClick={deleteAll} type="button" variant="outlined">
         Delete All
       </Button>
-      {formik.errors.input ? (
+      {formik.errors.input && formik.dirty ? (
         <div style={{ color: "red", margin: "30px auto" }}>
           {formik.errors.input}
         </div>
