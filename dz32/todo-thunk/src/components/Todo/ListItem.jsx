@@ -1,12 +1,11 @@
 import { useDispatch } from "react-redux";
 import { deleteItemThunk } from "../../utilities/Redux/thunks";
-import store from "../../utilities/Redux/store";
 
 const ListItem = ({ id, text }) => {
   const dispatch = useDispatch();
 
   function handleDelete() {
-    dispatch(deleteItemThunk(id, store.getState));
+    dispatch(deleteItemThunk(id));
   }
 
   return (

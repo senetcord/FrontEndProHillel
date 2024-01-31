@@ -2,8 +2,8 @@ import { addItem } from "../../utilities/Redux/slices/todoSlice";
 import { deleteItem } from "../../utilities/Redux/slices/todoSlice";
 import { setState } from "../../utilities/Redux/slices/todoSlice";
 
-const addItemThunk = (event, input, uuidv4, getState) => {
-  return (dispatch) => {
+const addItemThunk = (event, input, uuidv4) => {
+  return (dispatch, getState) => {
     event.preventDefault();
     let value = input.current.value;
     if (value.trim() === "") {
@@ -20,16 +20,16 @@ const addItemThunk = (event, input, uuidv4, getState) => {
   };
 };
 
-const deleteItemThunk = (id, getState) => {
-  return (dispatch) => {
+const deleteItemThunk = (id) => {
+  return (dispatch, getState) => {
     dispatch(deleteItem(id));
     const items = getState().todo;
     localStorage.setItem("todoItems", JSON.stringify(items));
   };
 };
 
-const deleteAllItemsThunk = (getState) => {
-  return (dispatch) => {
+const deleteAllItemsThunk = () => {
+  return (dispatch, getState) => {
     dispatch(setState([]));
     const items = getState().todo;
     localStorage.setItem("todoItems", JSON.stringify(items));
