@@ -1,0 +1,92 @@
+body {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 50%;
+  margin: auto;
+  margin-top: 150px;
+}
+
+.todo {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputForm {
+  display: flex;
+  height: 35px;
+}
+
+.inputForm input {
+  flex-grow: 4;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.inputForm input:focus {
+  border: 3px solid darkcyan;
+  outline: none;
+  box-shadow: 2px 1px 5px black;
+}
+
+.inputForm button {
+  flex-grow: 1;
+  background-color: darkcyan;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: whitesmoke;
+
+  box-shadow: 2px 1px 5px black;
+}
+
+.inputForm button:active {
+  box-shadow: none;
+}
+
+.list {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.listItem {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.listItem button {
+  background-color: darkcyan;
+  border-color: darkcyan;
+  cursor: pointer;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid darkcyan;
+  padding-top: 10px;
+  font-size: 1.05rem;
+  align-items: center;
+}
+
+.footer button {
+  border: none;
+  background-color: rgb(127, 214, 110);
+  height: 50px;
+  width: 70px;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 2px 1px 5px black;
+  font-size: 1rem;
+}
+
+.footer button:active {
+  box-shadow: none;
+}
