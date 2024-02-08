@@ -4,7 +4,7 @@ import TodoWidget from "../../widgets/Todo/TodoWidget";
 
 const TodoPage = () => {
   return (
-    <Box>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: "100px" }}>
       <HeaderWidget titleText={"TODO"} />
       <TodoWidget />
     </Box>
