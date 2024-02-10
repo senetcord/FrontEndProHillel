@@ -1,8 +1,15 @@
 import { Box, Button, IconButton, InputBase, Paper } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SearchIcon from "@mui/icons-material/Search";
+import { useDispatch, useSelector } from "react-redux";
+import { setItemsAsyncAction } from "../../../shared/Saga/asyncActions";
 
 const TodoFooter = () => {
+  const data = useSelector((state) => state.todo);
+  const dispatch = useDispatch();
+  function handleClearAll() {
+    dispatch(setItemsAsyncAction([]));
+  }
   return (
     <Box
       sx={{
@@ -19,11 +26,15 @@ const TodoFooter = () => {
           borderRadius: "30px",
         }}
       >
-        Count: 6
+        Count: {data.length}
       </Box>
 
-      <Button variant="contained" startIcon={<DeleteIcon />}>
-        Delete
+      <Button
+        onClick={handleClearAll}
+        variant="contained"
+        startIcon={<DeleteIcon />}
+      >
+        CLEAR ALL
       </Button>
 
       <Paper
