@@ -4,7 +4,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { setItemsAsyncAction } from "../../../shared/Saga/asyncActions";
 
-const TodoFooter = () => {
+const TodoFooter = ({ handleChange }) => {
   const data = useSelector((state) => state.todo);
   const dispatch = useDispatch();
   function handleClearAll() {
@@ -47,6 +47,7 @@ const TodoFooter = () => {
         }}
       >
         <InputBase
+          onChange={handleChange}
           sx={{ ml: 1, flex: 1 }}
           placeholder="Search here..."
           inputProps={{ "aria-label": "Search here..." }}
