@@ -13,6 +13,7 @@ const InputTodo = () => {
   function handleSubmit(event, form) {
     dispatch(addItemAsyncAction(event.todoInput));
     form.reset();
+    form.getFieldState("todoInput").active = true;
   }
 
   return (
