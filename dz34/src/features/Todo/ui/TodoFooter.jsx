@@ -44,6 +44,9 @@ const TodoFooter = ({ handleChange }) => {
           alignItems: "center",
           height: "60px",
           width: "550px",
+          "@media (max-width: 600px)": {
+            width: "200px",
+          },
         }}
       >
         <InputBase

@@ -6,11 +6,11 @@ import {
   getDataAsyncAction,
   setItemsAsyncAction,
 } from "./asyncActions";
-import getDataWorker from "./workers/getData";
-import addItemWorker from "./workers/addItem";
-import checkItemWorker from "./workers/checkItem";
-import setItemsWorker from "./workers/setItems";
-import deleteItemWorker from "./workers/deleteItem";
+import getDataWorker from "../../features/Todo/workers/getData";
+import addItemWorker from "../../features/Todo/workers/addItem";
+import checkItemWorker from "../../features/Todo/workers/checkItem";
+import setItemsWorker from "../../features/Todo/workers/setItems";
+import deleteItemWorker from "../../features/Todo/workers/deleteItem";
 
 export function* watcher() {
   yield takeEvery(getDataAsyncAction.type, getDataWorker);

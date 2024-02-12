@@ -1,5 +1,5 @@
 import { put, select } from "redux-saga/effects";
-import { setState } from "../../../features/Todo/slice/todoSlice";
+import { setState } from "../slice/todoSlice";
 
 export default function* setItemsWorker(actions) {
   const data = actions.payload;
