@@ -1,12 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import todoReducer from "../../features/Todo/slice/todoSlice";
+import todoReducer from "../../features/Todo/slices/todoSlice";
 import sagaMiddleware from "../Saga/saga";
 import { rootSaga } from "../Saga/rootSaga";
+import loaderReducer from "../../features/Todo/slices/isLoadingSlice";
 
 const store = configureStore({
   reducer: {
     todo: todoReducer,
+    loader: loaderReducer,
   },
+
   middleware: () => [sagaMiddleware],
 });
 

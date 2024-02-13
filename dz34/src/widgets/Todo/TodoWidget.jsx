@@ -25,36 +25,40 @@ const TodoWidget = () => {
     item.text.toLowerCase().startsWith(searchText)
   );
 
+  const isLoading = useSelector((state) => state.loader);
+
   return (
     <TodoEntity>
       <Title fontSize={"2.15rem"} />
       <InputTodo />
       <Title fontSize={"1.75rem"} />
       <TodoList>
-        {filteredItems.map((item) => {
-          if (item.checked === false) {
-            return (
-              <TodoListItem
-                key={item.id}
-                id={item.id}
-                text={item.text}
-                checked={item.checked}
-              />
-            );
-          }
-        })}
-        {filteredItems.map((item) => {
-          if (item.checked === true) {
-            return (
-              <TodoListItem
-                key={item.id}
-                id={item.id}
-                text={item.text}
-                checked={item.checked}
-              />
-            );
-          }
-        })}
+        {!isLoading &&
+          filteredItems.map((item) => {
+            if (item.checked === false) {
+              return (
+                <TodoListItem
+                  key={item.id}
+                  id={item.id}
+                  text={item.text}
+                  checked={item.checked}
+                />
+              );
+            }
+          })}
+        {!isLoading &&
+          filteredItems.map((item) => {
+            if (item.checked === true) {
+              return (
+                <TodoListItem
+                  key={item.id}
+                  id={item.id}
+                  text={item.text}
+                  checked={item.checked}
+                />
+              );
+            }
+          })}
       </TodoList>
       <TodoFooter handleChange={handleSearchChange} />
     </TodoEntity>
